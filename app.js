@@ -51,6 +51,10 @@ function addForum() {
     return;
   }
 
+  if (forumContainer.children.length > 0) {
+    return; // Forum already exists, do nothing
+  }
+
   const titleInput = document.createElement('input');
   titleInput.placeholder = 'What’s the book title?';
   titleInput.id = 'titleInput';
@@ -65,6 +69,8 @@ function addForum() {
 
   const submitButton = document.createElement('button');
   submitButton.textContent = 'Submit';
+  submitButton.id = 'submitButton'; // Adding the id
+
   
   submitButton.onclick = function () {
     const title = document.getElementById('titleInput').value;
@@ -94,7 +100,12 @@ function addForum() {
 const addBookBtn = document.getElementById('addBookBtn');
 addBookBtn.onclick = function () {
   const forumContainer = document.getElementById('forumContainer');
-  forumContainer.style.display = forumContainer.style.display === 'none' || forumContainer.style.display === '' ? 'block' : 'none';
+  if (forumContainer.style.display === 'none' || forumContainer.style.display === '') {
+    forumContainer.style.display = 'block';
+    addForum();
+  } else {
+    forumContainer.style.display = 'none';
+  }
 };
 
 addForum();

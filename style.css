@@ -1,11 +1,36 @@
-#cardsContainer{ 
+body{ 
+
+height: 100vh;
+
+}
+	#cardsContainer{ 
 
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	gap : 10px;
+	margin-top: 20px;
  }
  .cards{ 
 border-width:2px;
-border-style:solid;
-border-color:black;
+
+border-radius: 10px;
+background-color: #8192AD;
+  padding: 10px;
+  font-family: monospace;
+  text-align: center;
 
   }
+
+  #forumContainer{ 
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+}
+input { 
+grid-column: 1;
+}
+#submitButton{
+grid-column: 1 ;
+}
+#addBtn{ 
+grid-column: 1;
+ }
