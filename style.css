@@ -4,5 +4,8 @@
 	grid-template-columns: 1fr 1fr 1fr;
  }
  .cards{ 
+border-width:2px;
+border-style:solid;
+border-color:black;
 
   }

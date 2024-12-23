@@ -1,87 +1,100 @@
-
 const cardsContainer = document.getElementById('cardsContainer');
-
 
 const myLib = [
   { title: 'the bible', author: 'idk', pages: 18 },
   { title: 'hobbit', author: 'him', pages: 20 },
   { title: 'jalil', author: 'gfhfgh', pages: 41 },
   { title: 'kimgo', author: 'manda', pages: 45 },
-  { title: 'assa', author: '3issa', pages: 63 }, 
-
+  { title: 'assa', author: '3issa', pages: 63 },
 ];
 
-function Book(title, author, pages){
-this.title = title;
-this. author = author;
-this.pages = pages;
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
 }
 
+function displayBooks() {
+  cardsContainer.innerHTML = '';
+  for (let i = 0; i < myLib.length; i++) {
+    const bookTitle = document.createElement('h1');
+    bookTitle.textContent = myLib[i].title;
 
-function addToLibrary(){
+    const bookAuthor = document.createElement('h2');
+    bookAuthor.textContent = myLib[i].author;
 
-const newbook = new Book('newtitle', 'newauthor', 30 )
-myLib.push(newbook)
+    const bookPages = document.createElement('h3');
+    bookPages.textContent = `Pages: ${myLib[i].pages}`;
 
-}
-addToLibrary(); 
+    const littleCard = document.createElement('div');
+    littleCard.setAttribute('class', 'cards');
+    littleCard.appendChild(bookTitle);
+    littleCard.appendChild(bookAuthor);
+    littleCard.appendChild(bookPages);
 
-console.log(myLib);
-
-
-// make a loop thru the array that would display the books as "cards" on the page
-// 3 headers 
-// <h1> title </h1>
-// <h2> author </h2> 
-// <h3> pages : 18 <h3>  
-
-for (let i = 0; i < myLib.length; i++) {
-
-
-
-
-const bookTitle = document.createElement('h1'); 
-bookTitle.textContent = myLib[i].title;
-
-const bookAuthor = document.createElement('h2');
-bookAuthor.textContent = myLib[i].author; 
-
-
-const bookPages = document.createElement('h3');
-bookPages.textContent = myLib[i].pages; 
-
-
-
-
-
-const littleCard = document.createElement('div'); 
-cardsContainer.appendChild(littleCard)
-
-littleCard.setAttribute("class", "cards");
-
-
-littleCard.appendChild(bookTitle);
-littleCard.appendChild(bookAuthor);
-littleCard.appendChild(bookPages);
-
-
-
+    cardsContainer.appendChild(littleCard);
+  }
 }
 
+function addToLibrary() {
+  const newBook = new Book('newtitle', 'newauthor', 30);
+  myLib.push(newBook);
+  displayBooks();
+}
 
-function addForum(){ 
+displayBooks();
 
-const forumContainer = document.getElementById('forumContainer');
+function addForum() {
+  const forumContainer = document.getElementById('forumContainer');
   if (!forumContainer) {
     console.error('forumContainer not found in the DOM!');
     return;
   }
 
+  const titleInput = document.createElement('input');
+  titleInput.placeholder = 'What’s the book title?';
+  titleInput.id = 'titleInput';
 
+  const authorInput = document.createElement('input');
+  authorInput.placeholder = 'Who’s the author?';
+  authorInput.id = 'authorInput';
 
- const authorInput = document.createElement('h1'); 
-  authorInput.textContent = 'Submit a book'; 
- 
+  const pagesInput = document.createElement('input');
+  pagesInput.placeholder = 'How many pages does the book have?';
+  pagesInput.id = 'pagesInput';
+
+  const submitButton = document.createElement('button');
+  submitButton.textContent = 'Submit';
+  
+  submitButton.onclick = function () {
+    const title = document.getElementById('titleInput').value;
+    const author = document.getElementById('authorInput').value;
+    const pages = document.getElementById('pagesInput').value;
+
+    if (title === '' || author === '' || pages === '') {
+      alert('Please fill out all fields!');
+      return;
+    }
+
+    const newBook = new Book(title, author, parseInt(pages));
+    myLib.push(newBook);
+    displayBooks();
+
+    document.getElementById('titleInput').value = '';
+    document.getElementById('authorInput').value = '';
+    document.getElementById('pagesInput').value = '';
+  };
+
+  forumContainer.appendChild(titleInput);
   forumContainer.appendChild(authorInput);
-
+  forumContainer.appendChild(pagesInput);
+  forumContainer.appendChild(submitButton);
 }
+
+const addBookBtn = document.getElementById('addBookBtn');
+addBookBtn.onclick = function () {
+  const forumContainer = document.getElementById('forumContainer');
+  forumContainer.style.display = forumContainer.style.display === 'none' || forumContainer.style.display === '' ? 'block' : 'none';
+};
+
+addForum();
