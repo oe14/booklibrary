@@ -1,11 +1,10 @@
 const cardsContainer = document.getElementById('cardsContainer');
 
 const myLib = [
-  { title: 'the bible', author: 'idk', pages: 18 },
-  { title: 'hobbit', author: 'him', pages: 20 },
-  { title: 'jalil', author: 'gfhfgh', pages: 41 },
-  { title: 'kimgo', author: 'manda', pages: 45 },
-  { title: 'assa', author: '3issa', pages: 63 },
+  { title: 'atomic habits', author: 'cal newport', pages: 148 },
+  { title: 'Harry potter', author: 'j.k rolling', pages: 204 },
+  { title: 'anotherbook', author: 'their author', pages: 41 },
+  
 ];
 
 function Book(title, author, pages) {
@@ -26,11 +25,22 @@ function displayBooks() {
     const bookPages = document.createElement('h3');
     bookPages.textContent = `Pages: ${myLib[i].pages}`;
 
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.setAttribute('data-index', i);
+
+    removeButton.onclick = function () {
+      const index = removeButton.getAttribute('data-index');
+      myLib.splice(index, 1);
+      displayBooks();
+    };
+
     const littleCard = document.createElement('div');
     littleCard.setAttribute('class', 'cards');
     littleCard.appendChild(bookTitle);
     littleCard.appendChild(bookAuthor);
     littleCard.appendChild(bookPages);
+    littleCard.appendChild(removeButton);
 
     cardsContainer.appendChild(littleCard);
   }
@@ -52,7 +62,7 @@ function addForum() {
   }
 
   if (forumContainer.children.length > 0) {
-    return; // Forum already exists, do nothing
+    return;
   }
 
   const titleInput = document.createElement('input');
@@ -69,9 +79,8 @@ function addForum() {
 
   const submitButton = document.createElement('button');
   submitButton.textContent = 'Submit';
-  submitButton.id = 'submitButton'; // Adding the id
+  submitButton.id = 'submitButton';
 
-  
   submitButton.onclick = function () {
     const title = document.getElementById('titleInput').value;
     const author = document.getElementById('authorInput').value;
@@ -107,5 +116,3 @@ addBookBtn.onclick = function () {
     forumContainer.style.display = 'none';
   }
 };
-
-addForum();
