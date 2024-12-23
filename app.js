@@ -7,7 +7,8 @@ const myLib = [
   { title: 'hobbit', author: 'him', pages: 20 },
   { title: 'jalil', author: 'gfhfgh', pages: 41 },
   { title: 'kimgo', author: 'manda', pages: 45 },
-  { title: 'assa', author: '3issa', pages: 63 }
+  { title: 'assa', author: '3issa', pages: 63 }, 
+
 ];
 
 function Book(title, author, pages){
@@ -56,8 +57,6 @@ bookPages.textContent = myLib[i].pages;
 const littleCard = document.createElement('div'); 
 cardsContainer.appendChild(littleCard)
 
-
-
 littleCard.setAttribute("class", "cards");
 
 
@@ -66,5 +65,23 @@ littleCard.appendChild(bookAuthor);
 littleCard.appendChild(bookPages);
 
 
+
+}
+
+
+function addForum(){ 
+
+const forumContainer = document.getElementById('forumContainer');
+  if (!forumContainer) {
+    console.error('forumContainer not found in the DOM!');
+    return;
+  }
+
+
+
+ const authorInput = document.createElement('h1'); 
+  authorInput.textContent = 'Submit a book'; 
+ 
+  forumContainer.appendChild(authorInput);
 
 }
