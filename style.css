@@ -40,15 +40,21 @@ text-align: center;
 grid-column: 1 ;
 }
 #addBtn{ 
-grid-column: 1;
+
  }
+
+.btnContainer{
+	display: flex;
+justify-content: center;
+}
+
 
  button{ 
 background-color: #9C973E; 
 font-family: monospace;
 padding: 20px;
 border-radius: 10px;
-border-width: 1;
+
 font-size: 20px;
   }
   button:hover{
