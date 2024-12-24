@@ -1,10 +1,8 @@
 const cardsContainer = document.getElementById('cardsContainer');
 
 const myLib = [
-  { title: 'atomic habits', author: 'cal newport', pages: 148 },
-  { title: 'Harry potter', author: 'j.k rolling', pages: 204 },
-  { title: 'anotherbook', author: 'their author', pages: 41 },
-  
+ 
+ 
 ];
 
 function Book(title, author, pages) {
