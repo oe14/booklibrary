@@ -25,26 +25,32 @@ background-color: #9C973E;
   #forumContainer{ 
  display: flex;
  flex-direction: column;
- margin-left: 40vh;
- margin-right: 40vh;
+ margin-left: 200px;
+ margin-right: 200px;
 
 }
 input { 
 grid-column: 1;
 height: 30px;
 border-radius: 15px;
-border-width: 1px;
+border-width: 2px;
+border-color:  #9C973E;
+border-style: solid;
 margin-top: 10px;
 margin-bottom: 10px;
 font-family: monospace;
 text-align: center;
+background-color: #160835;
+font-weight: 600;
 }
+input:focus{ 
+background-color: #16084D;
+
+ }
 #submitButton{
 grid-column: 1 ;
 }
-#addBtn{ 
 
- }
 
 .btnContainer{
 	display: flex;
