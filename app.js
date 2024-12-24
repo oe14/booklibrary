@@ -1,9 +1,6 @@
 const cardsContainer = document.getElementById('cardsContainer');
 
-const myLib = [
- 
- 
-];
+const myLib = [];
 
 function Book(title, author, pages) {
   this.title = title;
@@ -54,14 +51,8 @@ displayBooks();
 
 function addForum() {
   const forumContainer = document.getElementById('forumContainer');
-  if (!forumContainer) {
-    console.error('forumContainer not found in the DOM!');
-    return;
-  }
-
-  if (forumContainer.children.length > 0) {
-    return;
-  }
+  if (!forumContainer) return;
+  if (forumContainer.children.length > 0) return;
 
   const titleInput = document.createElement('input');
   titleInput.placeholder = 'What’s the book title?';
@@ -107,10 +98,14 @@ function addForum() {
 const addBookBtn = document.getElementById('addBookBtn');
 addBookBtn.onclick = function () {
   const forumContainer = document.getElementById('forumContainer');
-  if (forumContainer.style.display === 'none' || forumContainer.style.display === '') {
-    forumContainer.style.display = 'block';
+  if (forumContainer.style.visibility === 'hidden' || forumContainer.style.visibility === '') {
+    forumContainer.style.visibility = 'visible';
+    forumContainer.style.height = 'auto';
     addForum();
+    addBookBtn.textContent = 'Hide Forum';
   } else {
-    forumContainer.style.display = 'none';
+    forumContainer.style.visibility = 'hidden';
+    forumContainer.style.height = '0';
+    addBookBtn.textContent = 'Add Book';
   }
 };
