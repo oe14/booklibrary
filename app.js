@@ -12,10 +12,10 @@ function displayBooks() {
   cardsContainer.innerHTML = '';
   for (let i = 0; i < myLib.length; i++) {
     const bookTitle = document.createElement('h1');
-    bookTitle.textContent = myLib[i].title;
+    bookTitle.textContent = `Title: ${myLib[i].title}`;
 
     const bookAuthor = document.createElement('h2');
-    bookAuthor.textContent = myLib[i].author;
+    bookAuthor.textContent = `Author: ${myLib[i].author}`;
 
     const bookPages = document.createElement('h3');
     bookPages.textContent = `Pages: ${myLib[i].pages}`;
